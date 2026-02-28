@@ -1,0 +1,14 @@
+package com.springboot.CustomMethodQuery;
+
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+
+public class CustomerController {
+	CustomerJpaRepository custom;
+	
+	@PostMapping("/custom")
+	public String getCustomer(@RequestBody Customer c) {
+		Customer cus = custom.save(c);
+		return cus.toString();
+	}
+}
