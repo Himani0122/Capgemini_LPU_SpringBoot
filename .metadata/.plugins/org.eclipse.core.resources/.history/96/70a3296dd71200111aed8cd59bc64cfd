@@ -1,0 +1,70 @@
+package com.capgemini.springbootbasic;
+
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+//@Controller //handles http request and check the end point is correct or not and give http response
+@RestController //it will return the data and controller will return the view
+public class DemoController {
+	
+	@PostMapping("/a")
+	//@GetMapping("/a") //this will give the end point whenever we send the request controller will check for the endpoint
+//	@ResponseBody //it will return the data if we dont use it will check for web page .html or view
+	public List<String> hello() {
+		return List.of("Himani","Adii","Ayush","Anjali","Aditya"); //used to return the list
+	}
+	
+	@PostMapping("/add")
+	public String createPlayer(@RequestBody Cricketer c) {
+		System.out.println(c);
+		return c.toString();
+	}
+	
+	//Nested 
+//	@PostMapping("/car")
+//	public String getCar(@RequestBody Car c) {
+//		System.out.println(c);
+//		return c.toString();
+//	}
+	
+	//how to enter list elements
+	@PostMapping("/person")
+	public String getperson(@RequestBody Person p) {
+		System.out.println(p);
+		return p.toString();
+	}
+	
+	@PostMapping("/college")
+	public String getcollege(@RequestBody College c) {
+		System.out.println(c);
+		return c.toString();
+	}
+	
+	@Autowired
+	CarJpaRepository carjpa;
+	
+	@PostMapping("/car")
+	public String getCar(@RequestBody Car c) {
+		Car car = carjpa.save(c);
+		return car.toString();
+	}
+	
+	@GetMapping("/find-id")
+	public String getById(@RequestParam int id) {
+		Optional<Car> option = carjpa.findById(id);
+		return option.isPresent()?option.get().toString():"Data not Exist";
+	}
+	
+	@GetMapping("/find-all")
+	public String getAllCars() {
+	    List<Car> cars = carjpa.findAll();
+	    return cars.isEmpty() ? "Data not exist" : cars.toString();
+	}
+}

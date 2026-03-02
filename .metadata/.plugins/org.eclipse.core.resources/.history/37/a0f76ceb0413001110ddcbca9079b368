@@ -1,0 +1,12 @@
+package com.prac.product_category_two_entity_case_study;
+
+import java.util.List;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.prac.product_category_two_entity_case_study.dto.Category;
+
+public interface CategoryRepository extends JpaRepository<Category,Integer> {
+	public boolean existsByName(String name);
+	public List<Category> findByName(String name);
+}

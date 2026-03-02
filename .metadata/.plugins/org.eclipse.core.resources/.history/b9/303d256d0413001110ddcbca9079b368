@@ -1,0 +1,10 @@
+package com.prac.product_category_two_entity_case_study;
+
+import java.util.List;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface ProductRepository extends JpaRepository<Product,Integer>{
+	public List<Product> findByNameContaining(String name);
+	public List<Product> findByCategoryCid(int cid);
+}

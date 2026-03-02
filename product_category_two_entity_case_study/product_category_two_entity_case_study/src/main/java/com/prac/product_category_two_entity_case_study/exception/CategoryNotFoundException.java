@@ -1,0 +1,8 @@
+package com.prac.product_category_two_entity_case_study.exception;
+
+public class CategoryNotFoundException extends RuntimeException {
+
+    public CategoryNotFoundException(String message) {
+        super(message);
+    }
+}
