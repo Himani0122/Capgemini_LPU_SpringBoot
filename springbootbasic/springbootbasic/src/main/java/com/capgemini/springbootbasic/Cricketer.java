@@ -1,0 +1,68 @@
+package com.capgemini.springbootbasic;
+
+import org.springframework.stereotype.Component;
+
+//@Component
+public class Cricketer {
+	private String name;
+	private String role;
+	private int runs;
+	private int no_of_match;
+	private double avg;
+	
+	public Cricketer(String name,String role,int runs,int no_of_match,double avg) {
+		this.name=name;
+		this.role=role;
+		this.runs=runs;
+		this.no_of_match=no_of_match;
+		this.avg=avg;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getRole() {
+		return role;
+	}
+
+	public void setRole(String role) {
+		this.role = role;
+	}
+
+	public int getRuns() {
+		return runs;
+	}
+
+	public void setRuns(int runs) {
+		this.runs = runs;
+	}
+
+	public int getNo_of_match() {
+		return no_of_match;
+	}
+
+	public void setNo_of_match(int no_of_match) {
+		this.no_of_match = no_of_match;
+	}
+
+	public double getAvg() {
+		return avg;
+	}
+
+	public void setAvg(double avg) {
+		this.avg = avg;
+	}
+
+	@Override
+	public String toString() {
+		return "Cricketer [name=" + name + ", role=" + role + ", runs=" + runs + ", no_of_match=" + no_of_match
+				+ ", avg=" + avg + "]";
+	}
+	
+	
+}
